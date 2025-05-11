@@ -1,0 +1,771 @@
+/* Variables para el sitio web */
+:root{
+    --primary: rgba(61, 61, 61, 0.2);
+    --secundary: #2e4469;
+    --background: #35495e;
+    --navblack: rgba(61, 61, 61, 0.6);
+    --whitefondo: rgba(255, 255, 255, 0.8);
+    --blacktext: black;
+    --white-text: #fff;
+    --sinfondo: rgba(61, 61, 61, 0.0);
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+/* INDEX */
+
+body{
+    background-image: url(../img/fondoweb.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+    height: 10vh; /* Ocupa el 10% del total (altura) de la pagina */
+    width: 100%;
+    display: flex; /* Caja flexible */
+    justify-content: space-around; /* Contenido justificado y separaciones del mismo tamaño */
+    align-items: center;
+    text-transform: uppercase;
+}
+
+header h1{
+    color: var(--white-text);
+    font-size: 2.1rem;
+    letter-spacing: 0.5rem; /* Espacio entre las letras (1rem = 14px) */
+}
+
+nav ul{
+    display: flex;
+}
+
+nav ul li{
+    border-right: solid 0.1rem var(--white-text);
+}
+
+nav ul li:last-child{ /* last-child - ultimo elemento hijo del li (en este caso - a) */
+    border-right: none;
+}
+
+nav ul li a{
+    color: var(--white-text);
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+    text-transform: uppercase; /* Mayusculas */
+}
+
+nav ul li:hover{
+    background-color: var(--navblack);
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+}
+
+/* Muestra el submenú al hacer hover sobre el padre */
+nav ul li:hover > ul {
+    display: flex;
+}
+
+nav ul li ul li{
+    border-right: none;
+    background-color: transparent;
+}
+
+nav ul li ul li:hover {
+    background-color: transparent !important;
+}
+
+/* Estilo para los enlaces del submenú */
+nav ul li ul li a {
+    white-space: nowrap;
+    padding: 0.8rem 1rem;
+    display: block;
+    font-size: 16px;
+}
+
+nav ul li ul li a:hover {
+    background-color: transparent !important;
+}
+
+/* Asegura que el li padre tenga posición relativa */
+nav ul li {
+    position: relative;
+}
+
+.drawer{
+    color: var(--white-text);
+    float: left; /* El elemento que flota va de izquierda a derecha */
+    cursor: pointer; /* Para que salga una mano */
+    display: none; /* Para que se oculte */
+    border: solid 0.1rem var(--white-text);
+    padding: 0.2rem;
+    border-radius: 0.1rem;
+}
+
+#ckbox{
+    display: none; /* Quitar el icono menú mientras la web se vea a pantalla completa */
+}
+
+/* Estilos en la parte principal */
+
+main{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 10vh - 10vh); /* alto total menos header y footer si son de 10vh */
+    gap: 1rem;
+}
+
+main h1{
+    font-size: 3rem;
+    color: var(--white-text);
+    text-align: center;
+    margin: 1rem;
+    background-color: var(--primary);
+    border-radius: 1rem;
+    padding: 1rem;
+    text-transform: uppercase;
+}
+
+main p{
+    font-size: 1.5rem;
+    color: var(--white-text);
+    text-align: center;
+    margin: 1rem 0; /* 1 - arriba y abajo / 0 - laterales*/
+    background-color: var(--primary);
+    border-radius: 1rem;
+}
+
+.content{
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+
+.btn{
+    background-color: var(--navblack);
+    color: var(--white-text);
+    border-style: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: var(--whitefondo);
+    color: var(--blacktext);
+    transition: all 0.3s;
+}
+
+footer{
+    background-color: var(--primary);
+    color: var(--white-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    margin-top: 0;
+}
+
+/* CONTACTO */
+
+.mainformulario {
+    display: flex;
+    justify-content: center;       /* Centra los elementos horizontalmente */
+    align-items: center;           /* Centra los elementos verticalmente */
+    min-height: 100vh;              /* Asegura que el formulario ocupe todo el alto de la ventana */
+    text-align: center;             /* Alinea el texto al centro */
+}
+
+.titulo {
+    font-size: 1.5rem;
+    color: var(--white-text);
+    text-align: center;
+    margin: auto;
+    background-color: var(--navblack);
+    border-radius: 1rem;
+    padding: 1rem;
+    text-transform: uppercase;
+    width: 600px;
+}
+
+.formulariocontacto {
+    width: 80%;                    /* Ajustar el ancho del formulario al 80% de su contenedor */
+    max-width: 800px;              /* Asegura que no se estire más de 800px */
+    min-width: 600px;              /* No se hará más pequeño que 600px */
+    margin: auto;
+    font-size: 1.3rem;
+    color: var(--white-text);
+    margin-top: 1rem;
+    border: 3px solid var(--whitefondo);
+    border-radius: 10px;
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* Estilo de los campos */
+label {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    max-width: 600px;               /* Ancho máximo */
+    font-size: 1.1rem;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 0;
+    margin-bottom: 1rem; 
+}
+
+textarea {
+    height: 200px;                  /* Ajuste de la altura del textarea */
+}
+
+.botonformulario {
+    width: 100px;
+    background-color: var(--navblack);
+    color: var(--whitefondo);
+    border: 0px;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.botonformulario:hover {
+    transition: 0.2s;
+    background-color: var(--whitefondo);
+    color: var(--blacktext);
+}
+
+/* SOBRE NOSOTROS */
+
+.mainsobrenosotros {
+    display: block;
+    text-align: center;
+    margin: auto;
+    padding: 1rem;
+}
+
+.contenidotabla {
+    border: 3px solid var(--whitefondo);
+    border-radius: 10px;
+    margin: auto;
+    width: 100%;
+    max-width: 700px; /* Limita el ancho máximo */
+    margin-top: 1.4rem;
+    color: var(--white-text);
+    background-color: var(--navblack);
+    padding: 1rem;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+.parrafos {
+    display: block;
+    padding: 0.3rem;
+    font-size: 1.1rem; /* Asegura que el texto sea más legible */
+    line-height: 1.6;
+}
+
+.redes {
+    display: flex;
+    justify-content: center; /* Alinea los iconos de las redes en el centro */
+    align-items: center;
+    text-transform: uppercase;
+    margin-top: 2rem;
+}
+
+.redes ul {
+    display: flex;
+    margin: 0; /* Elimina el margen por defecto de ul */
+    padding: 0; /* Elimina el padding por defecto */
+}
+
+.redes li a {
+    color: var(--white-text);
+    font-size: 2.5rem; /* Tamaño adecuado para iconos */
+    padding: 0.8rem 1rem;
+    text-transform: none; /* Evita mayúsculas en los iconos */
+    transition: 0.3s;
+}
+
+.redes li a:hover {
+    color: var(--navblack);
+}
+
+/* NOTICIAS */
+
+.mainnoticias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: auto; /* Quita vh fijo */
+    padding: 2rem 1rem;
+}
+
+.contenidonoticias {
+    margin: auto;
+    align-items: center;
+    padding: 2rem;
+}
+
+.contenidonoticias p {
+    background-color: var(--navblack);
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.otrasnoticias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 1vh;
+    margin: auto;
+}
+
+.otrasnoticias a span {
+    background-color: var(--navblack);
+    margin: auto;
+    margin-bottom: 0;
+}
+
+.asidenoticias {
+    display: flex;
+    align-items: center;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--white-text);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--button-hover);
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.asidenoticias:hover {
+    transform: scale(1.03);
+}
+
+/************************************************************************/
+
+/* INDEX RESPONSIVE */
+@media screen and (min-width: 1300px) {
+    body {
+        max-width: 1300px;
+        margin: 0 auto; /* Centra el contenido */
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .btn {
+        font-size: 1.3rem;
+    }
+}
+@media screen and (max-width: 767px) and (orientation: portrait) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .drawer {
+        display: block;
+    }
+
+    nav ul.menu-box {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--navblack);
+        position: absolute;
+        top: 10vh;
+        left: 0;
+    }
+
+    #ckbox:checked ~ .menu-box {
+        display: flex;
+    }
+
+    nav ul li {
+        width: 100%;
+        border-right: none;
+    }
+
+    nav ul li a {
+        padding: 1rem;
+        width: 100%;
+    }
+
+    main h1 {
+        font-size: 2rem;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+@media screen and (max-width: 767px) and (orientation: landscape) {
+    nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+        padding: 1rem;
+    }
+
+    .drawer {
+        display: block;
+    }
+
+    nav ul.menu-box {
+        display: none;
+        flex-direction: column;
+        background-color: var(--navblack);
+        width: 100%;
+        position: absolute;
+        top: 10vh;
+        left: 0;
+    }
+
+    #ckbox:checked ~ .menu-box {
+        display: flex;
+    }
+
+    main h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width: 767px) {
+    nav ul.menu-box {
+        position: static;
+    }
+
+    nav ul li {
+        position: static;
+    }
+
+    nav ul li ul {
+        display: none;
+        position: static; /* Quitar posición absoluta */
+        flex-direction: column;
+        background-color: var(--navblack);
+        padding-left: 1rem;
+    }
+
+    nav ul li:hover > ul {
+        display: flex;
+    }
+
+    nav ul li ul li {
+        border: none;
+    }
+
+    nav ul li ul li a {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+}
+
+/* RESPONSIVE FORMULARIO */
+
+/* Para pantallas grandes mayores a 1300px */
+@media (min-width: 1300px) {
+    .formulariocontacto {
+        width: 600px;  /* Formulario de ancho fijo */
+    }
+    .titulo {
+        width: 600px;  /* Titulo también con un ancho fijo */
+    }
+}
+
+/* Para tablets en posición vertical (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .formulariocontacto {
+        width: 90%;  /* El formulario ocupará un 90% del contenedor */
+        padding: 1rem;  /* Un poco más de espacio */
+    }
+    .titulo {
+        width: 90%;  /* Titulo también ocupa el 90% */
+    }
+    input, textarea, select {
+        max-width: 90%;  /* Los campos de entrada también ocupan el 90% */
+    }
+}
+
+/* Para tablets en posición horizontal (768px - 1024px, landscape) */
+@media (max-width: 1024px) and (min-width: 768px) and (orientation: landscape) {
+    .formulariocontacto {
+        width: 70%;  /* El formulario ocupa el 70% del contenedor */
+    }
+    input, textarea, select {
+        max-width: 70%;  /* Los campos también ajustan su tamaño */
+    }
+}
+
+/* Para teléfonos en posición vertical (menos de 768px) */
+@media (max-width: 768px) {
+    .formulariocontacto {
+        width: 95%;  /* El formulario ocupa el 95% del ancho disponible */
+        padding: 1rem;
+    }
+    input, textarea, select {
+        max-width: 95%;  /* Campos de entrada más anchos */
+    }
+    .titulo {
+        width: 95%;  /* Titulo ajustado a un ancho más pequeño */
+    }
+}
+
+/* Para teléfonos en posición horizontal (menos de 768px, landscape) */
+@media (max-width: 768px) and (orientation: landscape) {
+    .formulariocontacto {
+        width: 90%;  /* El formulario ocupa más espacio en horizontal */
+    }
+    input, textarea, select {
+        max-width: 90%;  /* Campos también se ajustan al 90% */
+    }
+    .titulo {
+        width: 90%;  /* Titulo ajustado */
+    }
+}
+
+/* Para pantallas pequeñas de escritorio (menos de 1024px) */
+@media (max-width: 1024px) {
+    .formulariocontacto {
+        width: 95%;  /* El formulario ocupa casi todo el ancho de la pantalla */
+        padding: 1rem;
+    }
+    .titulo {
+        width: 95%;  /* Titulo ajustado a un ancho más pequeño */
+    }
+    input, textarea, select {
+        max-width: 95%;  /* Campos de entrada ocupan el 95% */
+    }
+}
+@media (max-width: 640px) {
+    .formulariocontacto,
+    .titulo {
+      min-width: auto;
+      width: 90%;
+    }
+  
+    input, textarea, select {
+      font-size: 1rem;
+    }
+  
+    .titulo {
+      font-size: 1.2rem;
+    }
+  }
+/* RESPONSIVE SOBRE NOSOTROS */
+
+/* ✅ Resoluciones mayores a 1300px (pantallas grandes) */
+@media (min-width: 1300px) {
+    .contenidotabla {
+        max-width: 1200px;
+        font-size: 1.2rem;
+    }
+    .redes li a {
+        font-size: 3rem;
+    }
+}
+
+/* ✅ Tablet horizontal (aproximadamente 1024px) */
+@media (max-width: 1299px) and (min-width: 768px) and (orientation: landscape) {
+    .contenidotabla {
+        max-width: 900px;
+        font-size: 1.1rem;
+    }
+    .redes li a {
+        font-size: 2.5rem;
+    }
+}
+
+/* ✅ Tablet vertical (aproximadamente 768px de ancho) */
+@media (max-width: 1024px) and (min-width: 600px) and (orientation: portrait) {
+    .contenidotabla {
+        max-width: 95%;
+        font-size: 1rem;
+    }
+    .redes li a {
+        font-size: 2.2rem;
+    }
+}
+
+/* ✅ Teléfono horizontal (aprox. 600px) */
+@media (max-width: 767px) and (orientation: landscape) {
+    .contenidotabla {
+        max-width: 90%;
+        font-size: 0.95rem;
+    }
+    .redes {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .redes li a {
+        font-size: 2rem;
+        padding: 0.5rem;
+    }
+}
+
+/* ✅ Teléfono vertical (menos de 600px) */
+@media (max-width: 599px) and (orientation: portrait) {
+    .contenidotabla {
+        max-width: 95%;
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    .parrafos {
+        font-size: 0.95rem;
+        padding: 0.3rem 0;
+    }
+
+    .redes {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .redes li a {
+        font-size: 2rem;
+    }
+
+    nav h1 {
+        font-size: 1.2rem;
+    }
+
+    .menu-box {
+        flex-direction: column;
+    }
+}
+
+/* RESPONSIVE NOTICIAS */
+@media (min-width: 1300px) {
+    .mainnoticias,
+    .contenidonoticias {
+        max-width: 1300px;
+        margin: auto;
+    }
+}
+@media (min-width: 600px) and (max-width: 899px) and (orientation: portrait) {
+    .contenidonoticias p {
+        font-size: 1.6rem;
+    }
+
+    .asidenoticias {
+        height: 25vh;
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .otrasnoticias {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 900px) and (max-width: 1299px) and (orientation: landscape) {
+    .contenidonoticias p {
+        font-size: 1.8rem;
+    }
+
+    .asidenoticias {
+        height: 28vh;
+        font-size: 1rem;
+    }
+
+    .otrasnoticias {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 599px) and (orientation: portrait) {
+    .contenidonoticias {
+        padding: 1rem 0.5rem;
+    }
+
+    .contenidonoticias p {
+        font-size: 1.4rem;
+    }
+
+    .asidenoticias {
+        height: 20vh;
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .otrasnoticias {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 767px) and (orientation: landscape) {
+    .contenidonoticias p {
+        font-size: 1.5rem;
+    }
+
+    .asidenoticias {
+        height: 18vh;
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .otrasnoticias {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
